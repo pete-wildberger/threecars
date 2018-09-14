@@ -1,0 +1,30 @@
+{
+	"name": "threecars",
+	"version": "1.0.0",
+	"description": "Three.js demo to mess with",
+	"main": "dist/server.js",
+	"author": "Peter Wildberger",
+	"license": "MIT",
+	"dependencies": {
+		"@types/three": "^0.92.18",
+		"three": "^0.96.0"
+	},
+	"devDependencies": {
+		"@types/express": "^4.16.0",
+		"@types/express-serve-static-core": "^4.16.0",
+		"@types/node": "^10.9.4",
+		"@types/serve-static": "^1.13.2",
+		"body-parser": "^1.18.3",
+		"browserify": "^16.2.2",
+		"del": "^3.0.0",
+		"express": "^4.16.3",
+		"gulp": "^3.9.1",
+		"gulp-sass": "^4.0.1",
+		"gulp-typescript": "^5.0.0-alpha.3",
+		"gulp-uglify-es": "^1.0.4",
+		"ts-node": "^7.0.1",
+		"tsify": "^4.0.0",
+		"typescript": "^3.0.3",
+		"vinyl-source-stream": "^2.0.0"
+	}
+}
