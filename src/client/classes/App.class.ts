@@ -171,12 +171,17 @@ export class App {
     }
   };
   addHero = () => {
-    this.car = new THREE.Geometry();
-    this.car.mergeMesh(new THREE.Mesh(new THREE.BoxGeometry(0.3, 0.3, 0.6)));
-    this.car.mergeMesh(new THREE.Mesh(new THREE.BoxGeometry(0.2, 0.4, 0.1)));
-    this.car.mergeVertices(); // optional
-    var material = new THREE.MeshPhongMaterial({ color: 0xff0000 });
-    this.heroSphere = new THREE.Mesh(this.car, material);
+    this.car = new THREE.Object3D();
+    let topGeo = new THREE.BoxGeometry(0.2, 0.3, 0.1);
+    let bodyGeo = new THREE.BoxGeometry(0.3, 0.3, 0.6);
+    var carMaterial = new THREE.MeshStandardMaterial({ color: 0xff0000 });
+    var top = new THREE.Mesh(topGeo, carMaterial);
+    var body = new THREE.Mesh(bodyGeo, carMaterial);
+    top.position.y = 0.25;
+    this.car.add(body);
+    this.car.add(top);
+    var material = new THREE.MeshPhongMaterial();
+    this.heroSphere = this.car;
     this.heroSphere.receiveShadow = true;
     this.heroSphere.castShadow = true;
     this.scene.add(this.heroSphere);
