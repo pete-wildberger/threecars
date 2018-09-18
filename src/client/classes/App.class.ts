@@ -19,7 +19,7 @@ export class App {
   private heroRadius = 0.2;
   private sphericalHelper;
   private pathAngleValues;
-  private heroBaseY = 2;
+  private heroBaseY = 1.9;
   private bounceValue = 0.1;
   private gravity = 0.005;
   private leftLane = -1;

@@ -2,13 +2,11 @@ import * as THREE from 'three';
 export class Car {
   constructor() {}
   createCar() {
-    // wheels
-
     let bodyX: number = 0.3;
     let bodyY: number = 0.2;
     let bodyZ: number = 0.6;
     let car = new THREE.Group();
-    let topGeo = new THREE.CylinderGeometry(1 / Math.sqrt(2), 1.5 / Math.sqrt(2), 0.75, 4, 1); // size of top can be changed
+    let topGeo = new THREE.CylinderGeometry(1.2 / Math.sqrt(2), 1.5 / Math.sqrt(2), 0.75, 4, 1); // size of top can be changed
     let bodyGeo = new THREE.BoxGeometry(bodyX, bodyY, bodyZ);
     var carMaterial = new THREE.MeshStandardMaterial({ color: 0xff0000 });
     topGeo.computeFlatVertexNormals();
@@ -16,12 +14,12 @@ export class Car {
     var body = new THREE.Mesh(bodyGeo, carMaterial);
     let wheel_pos = this.wheel_places(bodyX, bodyY, bodyZ);
     let len: number = Object.keys(wheel_pos).length;
+    // wheels
     for (let i = 0; i < len; i += 1) {
       let wheelGeo = new THREE.TorusGeometry(0.05, 0.025, 16, 100);
       let wheelMat = new THREE.MeshBasicMaterial({ color: 'black' });
       let wheel = new THREE.Mesh(wheelGeo, wheelMat);
       wheel.rotation.y = Math.PI / 2;
-      console.log(wheel_pos);
       wheel.position.x = wheel_pos[String(i)].x;
       wheel.position.z = wheel_pos[String(i)].z;
       wheel.position.y = -0.12;
@@ -33,7 +31,7 @@ export class Car {
     top.position.z = 0.05;
     car.add(body);
     car.add(top);
-
+    console.log(car);
     return car;
   }
   wheel_places(x: number, y: number, z: number): { [key: string]: any } {
