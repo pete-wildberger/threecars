@@ -74,7 +74,7 @@ export class App {
     this.renderer.shadowMap.enabled = true; //enable shadow
     this.renderer.shadowMap.type = THREE.PCFSoftShadowMap;
     this.renderer.setSize(this.sceneWidth, this.sceneHeight);
-    this.dom = document.getElementById('TutContainer');
+    this.dom = document.getElementById('app');
     this.dom.appendChild(this.renderer.domElement);
     //stats = new Stats();
     //dom.appendChild(stats.dom);
