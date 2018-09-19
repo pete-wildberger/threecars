@@ -21,8 +21,8 @@ export class Car {
 			let wheelMat = new THREE.MeshBasicMaterial({ color: 'black' });
 			let wheel = new THREE.Mesh(wheelGeo, wheelMat);
 			wheel.rotation.y = Math.PI / 2;
-			wheel.position.x = wheel_pos[String(i)].x;
-			wheel.position.z = wheel_pos[String(i)].z;
+			wheel.position.x = wheel_pos[i].x;
+			wheel.position.z = wheel_pos[i].z;
 			wheel.position.y = -0.12;
 			car.add(wheel);
 		}
@@ -31,7 +31,7 @@ export class Car {
 			let bumperGeo = new THREE.BoxGeometry(0.32, 0.05, 0.02);
 			let material = new THREE.MeshStandardMaterial({ metalness: 0.1, roughness: 0.5 });
 			let bumper = new THREE.Mesh(bumperGeo, material);
-			if (i == 0) {
+			if (i === 0) {
 				bumper.position.z = bodyZ / 2;
 			} else {
 				bumper.position.z = -bodyZ / 2;
@@ -47,12 +47,7 @@ export class Car {
 		car.add(top);
 		return car;
 	}
-	wheel_places(x: number, y: number, z: number): { [key: string]: any } {
-		return {
-			'0': { x: -x / 2, z: z / 4 },
-			'1': { x: x / 2, z: z / 4 },
-			'2': { x: x / 2, z: -z / 4 },
-			'3': { x: -x / 2, z: -z / 4 }
-		};
+	wheel_places(x: number, y: number, z: number): Array<{ x: number; z: number }> {
+		return [{ x: -x / 2, z: z / 4 }, { x: x / 2, z: z / 4 }, { x: x / 2, z: -z / 4 }, { x: -x / 2, z: -z / 4 }];
 	}
 }
