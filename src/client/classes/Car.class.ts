@@ -1,6 +1,5 @@
 import * as THREE from 'three';
 export class Car {
-	constructor() {}
 	createCar() {
 		let bodyX: number = 0.3;
 		let bodyY: number = 0.2;
@@ -47,7 +46,7 @@ export class Car {
 		car.add(top);
 		return car;
 	}
-	wheel_places(x: number, y: number, z: number): Array<{ x: number; z: number }> {
+	private wheel_places(x: number, y: number, z: number): Array<{ x: number; z: number }> {
 		return [{ x: -x / 2, z: z / 4 }, { x: x / 2, z: z / 4 }, { x: x / 2, z: -z / 4 }, { x: -x / 2, z: -z / 4 }];
 	}
 }
