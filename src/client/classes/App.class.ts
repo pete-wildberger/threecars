@@ -1,6 +1,7 @@
 import * as THREE from 'three';
 import { Tree } from './Tree.class';
 import { Car } from './Car.class';
+import { Elf } from './Elf.class';
 export class App {
   private sceneWidth;
   private sceneHeight;
@@ -261,8 +262,16 @@ export class App {
   addTree = (inPath, row, isLeft?) => {
     var newTree;
     if (inPath) {
-      if (this.treesPool.length == 0) return;
-      newTree = this.treesPool.pop();
+      if (this.treesPool.length == 0) {
+        return;
+      }
+      if (Math.random() > 0.9) {
+        newTree = Elf.createElf();
+        console.log('elf');
+      } else {
+        newTree = this.treesPool.pop();
+      }
+
       newTree.visible = true;
       //console.log("add tree");
       this.treesInPath.push(newTree);
@@ -285,7 +294,7 @@ export class App {
     var rollingGroundVector = this.rollingGroundSphere.position.clone().normalize();
     var treeVector = newTree.position.clone().normalize();
     newTree.quaternion.setFromUnitVectors(treeVector, rollingGroundVector);
-    newTree.rotation.x += Math.random() * (2 * Math.PI / 10) + -Math.PI / 10;
+    newTree.rotation.x += Math.random() * ((2 * Math.PI) / 10) + -Math.PI / 10;
 
     this.rollingGroundSphere.add(newTree);
   };
